@@ -10,13 +10,11 @@ class ChecklistApp(tk.Tk):
 
         self.tasks = {}
 
-        # Header
         header_frame = ttk.Frame(self, padding=10)
         header_frame.pack(fill="x")
         title_label = ttk.Label(header_frame, text="My Checklist")
         title_label.pack()
 
-        # Input row
         input_frame = ttk.Frame(self, padding=10)
         input_frame.pack(fill="x", padx=10)
         self.entry_task = ttk.Entry(input_frame, width=40)
@@ -32,11 +30,11 @@ class ChecklistApp(tk.Tk):
         add_btn = ttk.Button(input_frame, text="Add Task", command=self.add_task)
         add_btn.pack(side="left")
 
-        # Tasks container
+
         self.tasks_frame = ttk.Frame(self, padding=10)
         self.tasks_frame.pack(fill="both", expand=True, padx=10)
 
-        # Action buttons
+
         button_frame = ttk.Frame(self, padding=10)
         button_frame.pack(fill="x", pady=5, padx=10)
         self.btn_done = ttk.Button(button_frame, text="Mark Done", command=self.mark_done)
@@ -62,7 +60,7 @@ class ChecklistApp(tk.Tk):
         check_btn = ttk.Checkbutton(task_frame, variable=var)
         check_btn.pack(side="left", padx=6)
 
-        # Category as plain text
+
         category_label = ttk.Label(task_frame, text=f"[{category}]")
         category_label.pack(side="left", padx=(0, 6))
 
@@ -79,7 +77,7 @@ class ChecklistApp(tk.Tk):
             if not self.tasks[task_frame]["done"]:
                 var.set(not var.get())
 
-        # Simple click-to-toggle on row and labels
+
         for w in (task_frame, task_label, status_label, datetime_label, category_label):
             w.bind("<Button-1>", toggle_task)
 
@@ -91,7 +89,7 @@ class ChecklistApp(tk.Tk):
             "label": task_label,
             "status": status_label,
             "datetime": datetime_label,
-            "badge": category_label  # kept key name for structure compatibility
+            "badge": category_label  
         }
 
     def mark_done(self):
